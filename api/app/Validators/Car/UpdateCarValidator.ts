@@ -8,11 +8,12 @@ export default class UpdateCarValidator {
     name: schema.string.optional({}, [rules.maxLength(255)]),
     manufacturer: schema.string.optional({}, [rules.maxLength(255)]),
     brand: schema.string.optional({}, [
-      rules.maxLength(7),
+      rules.minLength(7),
       rules.alphaNum(),
       rules.unique({ table: 'cars', column: 'brand', whereNot: { id: this.ctx.params.id } }),
     ]),
     yearOfManufacture: schema.number.optional([rules.range(1886, 2023)]),
+    yearOfModel: schema.number.optional([rules.range(1886, 2023)]),
     description: schema.string.optional(),
     ownerId: schema.number.optional([rules.exists({ table: 'owners', column: 'id' })]),
   })

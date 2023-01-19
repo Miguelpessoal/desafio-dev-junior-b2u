@@ -10,6 +10,7 @@ export default class extends BaseSchema {
       table.string('manufacturer').notNullable()
       table.string('brand').unique().notNullable()
       table.integer('year_of_manufacture').notNullable()
+      table.integer('year_of_model').notNullable()
       table.text('description')
       table.integer('owner_id').unsigned().references('id').inTable('owners').notNullable()
       table.timestamps()

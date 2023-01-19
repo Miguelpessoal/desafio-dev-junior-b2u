@@ -27,6 +27,9 @@ export default class Car extends BaseModel {
   public yearOfManufacture: number
 
   @column()
+  public yearOfModel: number
+
+  @column()
   public description: string
 
   @column.dateTime({ autoCreate: true })

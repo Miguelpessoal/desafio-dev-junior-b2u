@@ -9,11 +9,12 @@ export default class StoreCarValidator {
     manufacturer: schema.string({}, [rules.required(), rules.maxLength(255)]),
     brand: schema.string({}, [
       rules.required(),
-      rules.maxLength(7),
+      rules.minLength(7),
       rules.alphaNum(),
       rules.unique({ table: 'cars', column: 'brand' }),
     ]),
     yearOfManufacture: schema.number([rules.required(), rules.range(1886, 2023)]),
+    yearOfModel: schema.number([rules.required(), rules.range(1886, 2023)]),
     description: schema.string({}, [rules.nullable()]),
     ownerId: schema.number([rules.required(), rules.exists({ table: 'owners', column: 'id' })]),
   })
