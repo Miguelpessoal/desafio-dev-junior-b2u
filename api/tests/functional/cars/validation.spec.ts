@@ -5,7 +5,9 @@ import OwnerFactory from 'Database/factories/OwnerFactory'
 
 import { route } from '../../../helpers/Functions/Router'
 
-test.group('Cars Validation', () => {
+test.group('Cars Validation', (group) => {
+  group.transaction()
+
   test('it should not be able to create a car without required data', async ({ client }) => {
     const response = await client.post(route('cars.store'))
 
